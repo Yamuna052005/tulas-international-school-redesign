@@ -4,11 +4,6 @@ A modern, animated, and responsive redesign of the **Tulas International School 
 
 The project preserves the school's **yellow-and-navy visual identity, official logo, and core website content**, while rebuilding the homepage as a polished single-page experience with interactive animations, responsive layouts, accessibility support, and performance-conscious implementation.
 
-## Live Demo
-
-* **Live Website:** Add your Vercel / Netlify URL here
-* **GitHub Repository:** Add your GitHub repository URL here
-
 ---
 
 ## Overview

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --paper: 247 248 251;
+    --surface: 255 255 255;
+    --ink: 14 29 56;
+    --muted: 77 90 113;
+    --line: 218 224 236;
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: 8 15 31;
+    --surface: 16 27 52;
+    --ink: 238 241 247;
+    --muted: 160 172 196;
+    --line: 36 50 80;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--ink));
+    outline-offset: 3px;
+  }
+
+  .on-navy :focus-visible {
+    outline-color: #f5b800;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Short colour cross-fade while the theme flips (class is added by useTheme). */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    fill 0.35s ease !important;
+}

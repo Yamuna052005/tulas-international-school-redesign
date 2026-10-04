@@ -1,91 +1,563 @@
-# Tulas International School (TIS) - Homepage Redesign
+# Tulas International School (TIS) — Homepage Redesign
 
-An animated, responsive redesign of the Tulas International School homepage. It keeps the school's copy, yellow-and-navy identity and official logo, and rebuilds the page as a modern single-page experience: a Himalayan-ridge parallax hero, a brand tagline ticker, an interactive sports index, and a validated enquiry form.
+A modern, animated, and responsive redesign of the **Tulas International School (TIS)** homepage, built with React, Vite, Tailwind CSS, and Framer Motion.
+
+The project preserves the school's **yellow-and-navy visual identity, official logo, and core website content**, while rebuilding the homepage as a polished single-page experience with interactive animations, responsive layouts, accessibility support, and performance-conscious implementation.
 
 ## Live Demo
-- **Live URL:** [Insert Vercel / Netlify Link Here]
-- **Repository:** [Insert GitHub Repo Link Here]
+
+* **Live Website:** Add your Vercel / Netlify URL here
+* **GitHub Repository:** Add your GitHub repository URL here
+
+---
+
+## Overview
+
+This project reimagines the Tulas International School homepage as a modern single-page web experience.
+
+The redesign combines the original school's identity and content with modern frontend techniques such as:
+
+* Responsive layouts
+* Scroll-based animations
+* Himalayan-inspired parallax effects
+* Interactive sections
+* Dark / light theme switching
+* Custom cursor interactions
+* Accessible form validation
+* Animated statistics
+* Smooth navigation
+* Reduced-motion support
+
+The project focuses on **component reusability, maintainability, accessibility, responsive design, and animation performance**.
+
+---
+
+## Key Features
+
+### Animated Hero Section
+
+* Himalayan-inspired parallax design
+* Layered mountain/ridge animations
+* Scroll-linked movement
+* Responsive typography and layout
+* Primary call-to-action
+* Reduced-motion support
+
+### Custom Cursor
+
+The custom cursor is implemented using Framer Motion.
+
+Features include:
+
+* Spring-based cursor ring
+* Center cursor dot
+* Interactive hover states
+* Enlarged cursor over buttons, links, tabs, and form controls
+* Motion values instead of React state for cursor movement
+
+The cursor is automatically disabled on touch and coarse-pointer devices.
+
+### Scroll-Triggered Animations
+
+Reusable animation components provide consistent entrance effects throughout the page.
+
+Implemented components include:
+
+* `Reveal`
+* `Stagger`
+* `StaggerItem`
+
+Animations are triggered when sections enter the viewport and are configured to run only once.
+
+### Dark / Light Theme
+
+The website includes an animated theme switcher with:
+
+* Light theme
+* Dark theme
+* System preference fallback
+* `localStorage` persistence
+* Animated sun/moon transition
+* Theme applied before first paint to reduce flash
+
+### Scroll Progress
+
+A fixed scroll progress indicator shows the user's current position on the page.
+
+It uses Framer Motion's:
+
+* `useScroll`
+* `useSpring`
+
+### Interactive Navigation
+
+The navigation includes:
+
+* Active section detection
+* Smooth scrolling
+* Animated active-section underline
+* Responsive mobile navigation
+* Intersection Observer-based section tracking
+
+### Animated Statistics
+
+Important school statistics are displayed using animated counters, including:
+
+* 22-acre campus
+* 16+ Olympic sports
+* 24×7 medical assistance
+* 6:1 student–teacher ratio
+
+### Interactive Sports Section
+
+The sports section presents the school's sports offerings through an interactive interface.
+
+Sports include:
+
+* Archery
+* Cycling
+* Hockey
+* Swimming
+* Taekwondo
+* Football
+* Shooting Range
+* Horse Riding
+* Billiards
+* Squash
+* Volleyball
+* Basketball
+* Cricket
+* Lawn Tennis
+* Badminton
+* Table Tennis
+
+### Rankings & Achievements
+
+The project includes a structured rankings section containing:
+
+* Ranking position
+* Location
+* School/category information
+* Source references
+
+### Student Voices & Parent Reviews
+
+The website includes:
+
+* Student testimonials
+* Parent reviews
+* Featured review
+* Responsive review cards
+* Horizontal scroll-snap interaction
+
+### Enquiry Form
+
+The enquiry form includes client-side validation for:
+
+* Parent/guardian name
+* Phone number
+* Student class
+* State
+* Consent
+
+Accessibility attributes include:
+
+* `aria-invalid`
+* `aria-describedby`
+* Proper form labels
+* Keyboard-friendly controls
+
+The form displays a confirmation state after successful validation.
+
+> **Note:** The enquiry form is currently frontend-only. It does not send data to a backend or implement OTP verification.
+
+---
 
 ## Tech Stack
-- **Framework:** React 18 + Vite 5
-- **Styling:** Tailwind CSS 3 (theme tokens as CSS variables)
-- **Animations:** Framer Motion 11 (plus CSS keyframes for the marquee and the 360 ring)
-- **Icons:** Lucide React
-- **Deployment:** Vercel / Netlify / GitHub Pages
 
-## Standout Features Implemented
-All four optional features are implemented.
+| Technology                      | Purpose                                  |
+| ------------------------------- | ---------------------------------------- |
+| React 18                        | Component-based UI development           |
+| Vite 5                          | Development and production build tooling |
+| Tailwind CSS 3                  | Responsive styling                       |
+| Framer Motion 11                | Animations and interactive motion        |
+| Lucide React                    | Icons                                    |
+| JavaScript                      | Application logic                        |
+| CSS Variables                   | Theme tokens and theming                 |
+| Vercel / Netlify / GitHub Pages | Deployment                               |
 
-1. **Custom cursor** (`components/animation/CustomCursor.jsx`): a spring-driven ring plus dot. Position lives in motion values, so mouse moves cause no React re-renders. The ring grows and fills over links, buttons, form controls and tabs. It only mounts when `(hover: hover) and (pointer: fine)` matches, so touch devices never get it.
-2. **Scroll-triggered reveals** (`components/animation/Reveal.jsx`): `Reveal`, `Stagger` and `StaggerItem` use `whileInView` with `viewport={{ once: true }}`. Entrances take 0.5s with an 0.08s stagger.
-3. **Animated dark/light theme switcher** (`components/animation/ThemeToggle.jsx`, `hooks/useTheme.js`): an accessible `role="switch"` with a sliding knob and a rotating sun/moon icon. The choice is saved in `localStorage` and falls back to the OS preference. A small inline script in `index.html` applies the saved theme before first paint, so there is no flash.
-4. **Scroll progress bar** (`components/animation/ScrollProgress.jsx`): `useScroll` + `useSpring` driving `scaleX` on a fixed bar.
-
-Other touches: a scroll-linked parallax hero, a nav underline that glides between sections (`layoutId` + `IntersectionObserver`), count-up statistics, an animated tab switcher, a scroll-snap review carousel, and a skip link.
-
-## Getting Started Locally
-
-Requires Node.js 18 or newer.
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/tis-homepage-redesign.git
-   cd tis-homepage-redesign
-   ```
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-4. Open http://localhost:5173 in your browser.
-
-Other scripts: `npm run build` (production build into `dist/`) and `npm run preview` (serve the build locally).
-
-## Deployment
-
-- **Vercel:** import the repo. Framework preset "Vite", build command `npm run build`, output directory `dist`.
-- **Netlify:** build command `npm run build`, publish directory `dist`.
-- **GitHub Pages:** the site is served from `/<repo-name>/`, so build with the base path set:
-  ```bash
-  VITE_BASE=/tis-homepage-redesign/ npm run build
-  ```
-  then publish the `dist/` folder (for example with a GitHub Actions Pages workflow). Note that `index.html` references `/favicon.svg`; with a sub-path base Vite rewrites this automatically.
+---
 
 ## Project Structure
 
-```
+```text
 src/
 ├── components/
-│   ├── ui/          Button, Section, SectionHeading, Field, Logo
-│   ├── layout/      Navbar, MobileNav, Footer
-│   ├── sections/    Hero, Marquee, About, Stats, Rankings, Sports, Community,
-│   │                VirtualTour, StudentVoices, Reviews, Enquire, Contact
-│   └── animation/   CustomCursor, ScrollProgress, ThemeToggle, Reveal, variants
-├── hooks/           useTheme, useMediaQuery, useActiveSection
-├── data/            site.js (all copy, links, lists)
-├── index.css        theme tokens (CSS variables) and global styles
-├── App.jsx          page composition
+│   ├── ui/
+│   │   ├── Button.jsx
+│   │   ├── Field.jsx
+│   │   ├── Logo.jsx
+│   │   ├── Section.jsx
+│   │   └── SectionHeading.jsx
+│   │
+│   ├── layout/
+│   │   ├── Navbar.jsx
+│   │   ├── MobileNav.jsx
+│   │   └── Footer.jsx
+│   │
+│   ├── sections/
+│   │   ├── Hero.jsx
+│   │   ├── Marquee.jsx
+│   │   ├── About.jsx
+│   │   ├── Stats.jsx
+│   │   ├── Rankings.jsx
+│   │   ├── Sports.jsx
+│   │   ├── Community.jsx
+│   │   ├── VirtualTour.jsx
+│   │   ├── StudentVoices.jsx
+│   │   ├── Reviews.jsx
+│   │   ├── Enquire.jsx
+│   │   └── Contact.jsx
+│   │
+│   └── animation/
+│       ├── CustomCursor.jsx
+│       ├── Reveal.jsx
+│       ├── ScrollProgress.jsx
+│       ├── ThemeToggle.jsx
+│       └── variants.js
+│
+├── hooks/
+│   ├── useActiveSection.js
+│   ├── useMediaQuery.js
+│   └── useTheme.js
+│
+├── data/
+│   └── site.js
+│
+├── App.jsx
+├── index.css
 └── main.jsx
 ```
 
-### Architecture notes (for the technical review)
+---
 
-- **Content is separate from presentation.** Every string, link and list lives in `data/site.js`; section components only map over it.
-- **Theming** uses CSS variables (`--paper`, `--surface`, `--ink`, `--muted`, `--line`) exposed as Tailwind colours with alpha support. Components use `bg-paper`, `text-ink` and so on, so no component needs `dark:` variants. Brand colours (`navy`, `accent`) are constant in both themes.
-- **State is local and minimal.** `useTheme` is owned by `Navbar` (the only consumer). The cursor, enquiry form, carousel and tabs each keep their own state. Per-frame values (cursor position, scroll progress, count-up numbers, parallax) go through Framer Motion motion values rather than React state.
-- **Hooks:** `useMediaQuery` wraps `useSyncExternalStore`; `useActiveSection` is a single `IntersectionObserver`; `useTheme` syncs state to the `<html>` class and `localStorage`.
-- **Accessibility:** semantic landmarks (`header`, `nav`, `main`, `section[aria-labelledby]`, `footer`), skip link, visible focus rings, 44px+ touch targets, labelled form fields with `aria-invalid` / `aria-describedby`, ARIA tabs and switch roles, and `MotionConfig reducedMotion="user"` plus `motion-reduce` classes for CSS animations.
-- **Performance:** animations use transform and opacity only; the map iframe is lazy-loaded; the cursor effect is skipped on touch devices.
+## Architecture
 
-## Brand Identity Retained
-- Copy, statistics, rankings, personalities and parent reviews are taken from tis.edu.in.
-- Yellow accent and navy base, echoing the yellow underline used in the original navigation.
-- The official logo is loaded from tis.edu.in (with a text fallback if it cannot load).
+### Content-Driven Architecture
+
+Website content is separated from presentation and maintained in:
+
+```text
+src/data/site.js
+```
+
+This includes:
+
+* Navigation links
+* School information
+* Statistics
+* Rankings
+* Sports
+* Student information
+* Reviews
+* Form options
+* Footer links
+* Social links
+
+This approach keeps the React components focused on rendering and interaction instead of storing large amounts of static content.
+
+### Reusable Components
+
+Common UI elements are extracted into reusable components such as:
+
+* `Button`
+* `Section`
+* `SectionHeading`
+* `Field`
+* `Logo`
+
+Animation behavior is also separated into reusable components.
+
+### Custom Hooks
+
+The project uses custom hooks for:
+
+* Theme management
+* Media query detection
+* Active section detection
+
+`useMediaQuery` uses `useSyncExternalStore`, while `useActiveSection` uses `IntersectionObserver`.
+
+---
+
+## Theme System
+
+The application uses CSS variables for theme tokens.
+
+Core variables include:
+
+```text
+--paper
+--surface
+--ink
+--muted
+--line
+```
+
+These values are exposed through Tailwind utility classes such as:
+
+```text
+bg-paper
+bg-surface
+text-ink
+text-muted
+border-line
+```
+
+The school's primary brand colors remain consistent across light and dark themes.
+
+---
+
+## Animation & Performance
+
+The project uses Framer Motion for interactive animations while avoiding unnecessary React re-renders.
+
+Motion values are used for high-frequency effects such as:
+
+* Cursor movement
+* Scroll progress
+* Hero parallax
+* Animated counters
+
+Animations primarily use:
+
+```text
+transform
+opacity
+```
+
+to reduce layout and paint overhead.
+
+Additional performance considerations include:
+
+* Custom cursor disabled on touch devices
+* Lazy-loaded map iframe
+* `viewport={{ once: true }}` for reveal animations
+* Reduced-motion support
+* Motion values instead of React state for frame-based animation
+
+---
+
+## Accessibility
+
+Accessibility was considered throughout the implementation.
+
+The website includes:
+
+* Semantic HTML landmarks
+* Skip-to-content link
+* Keyboard-accessible controls
+* Visible focus states
+* Large touch targets
+* Proper form labels
+* ARIA attributes for validation
+* ARIA tabs
+* ARIA switch
+* Reduced-motion support
+
+Framer Motion is configured to respect user motion preferences:
+
+```jsx
+<MotionConfig reducedMotion="user">
+```
+
+---
+
+## Brand Identity
+
+The redesign intentionally preserves the visual identity of Tulas International School.
+
+### Brand Elements
+
+* Navy primary color
+* Yellow accent
+* Yellow navigation underline
+* Official school logo
+* School-specific content
+* Himalayan-inspired visual direction
+
+The official logo is loaded from the school's website with a text fallback if the image cannot be loaded.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have:
+
+* Node.js 18 or newer
+* npm
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/tis-homepage-redesign.git
+cd tis-homepage-redesign
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open the application at:
+
+```text
+http://localhost:5173
+```
+
+### Create Production Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+---
+
+## Available Scripts
+
+| Command           | Description                  |
+| ----------------- | ---------------------------- |
+| `npm run dev`     | Start the development server |
+| `npm run build`   | Create the production build  |
+| `npm run preview` | Preview the production build |
+
+---
+
+## Deployment
+
+### Vercel
+
+Import the repository into Vercel.
+
+Use:
+
+```text
+Framework Preset: Vite
+Build Command: npm run build
+Output Directory: dist
+```
+
+### Netlify
+
+Use:
+
+```text
+Build Command: npm run build
+Publish Directory: dist
+```
+
+### GitHub Pages
+
+If the repository is hosted under a sub-path, build using:
+
+```bash
+VITE_BASE=/tis-homepage-redesign/ npm run build
+```
+
+Then deploy the generated `dist` directory using GitHub Pages or GitHub Actions.
+
+---
 
 ## Known Limitations
-- **The enquiry form is front-end only.** It validates and shows a confirmation but sends nothing, and the original site's OTP verification is not reproduced. Connect it to a real endpoint before using it in production.
-- Personality photos, sports artwork and award images from the original site are not included; people are shown with initials instead.
-- Several footer links point to documents on the live tis.edu.in site.
+
+### Enquiry Form
+
+The enquiry form currently performs client-side validation and displays a success state.
+
+It does not currently:
+
+* Send form data to a backend
+* Store enquiries
+* Send emails
+* Implement OTP verification
+
+A production deployment should connect the form to a secure backend or form-processing service.
+
+### OTP Verification
+
+The OTP verification flow from the original website has not been reproduced.
+
+### Original Media Assets
+
+Some original website assets have intentionally not been reproduced, including:
+
+* Personality photographs
+* Sports artwork
+* Award images
+
+Where appropriate, initials or redesigned visual elements are used.
+
+### External Resources
+
+Some resources continue to reference the official Tulas International School website, including external documents, virtual tour resources, map content, social links, and the official logo.
+
+---
+
+## Future Improvements
+
+Potential future enhancements include:
+
+* Backend integration for enquiry submissions
+* Secure OTP verification
+* Server-side form validation
+* Automated unit and component testing
+* SEO metadata
+* Structured data
+* Analytics integration
+* Improved image optimization
+* CMS-based content management
+* CI/CD pipeline
+* Production error monitoring
+* Improved form submission feedback
+
+---
+
+## Project Objective
+
+The goal of this project is to demonstrate how an existing educational website can be transformed into a **modern, responsive, accessible, and animation-rich React experience** while preserving its original brand identity and core content.
+
+The project demonstrates:
+
+* React component architecture
+* Reusable UI components
+* Responsive design
+* Tailwind CSS
+* Framer Motion
+* Custom React hooks
+* Accessibility practices
+* Theme management
+* Performance-conscious animation
+* Content-driven architecture
+
+---
+
+## Disclaimer
+
+This project is a **frontend redesign / concept implementation** of the Tulas International School homepage and is intended for educational, portfolio, and technical demonstration purposes.
+
+Tulas International School's name, branding, logo, content, and related materials belong to their respective owners.
